@@ -21,7 +21,7 @@ register_matplotlib_converters()
 #dataset
 column_names = ['time', 'temp', 'pressure0', 'dp', 'airhumidity', 'winddir', 'windspd10', 'weathercnd', 'Td', 'mm precip12', 'ur/h', 'usv/h']
 catcols = ['winddir', 'weathercnd']
-raw_dataset = pd.read_csv("D:\\Users\\User\\Desktop\\radon stuff\\beshtau_weather.csv", names = column_names, na_values='?', sep =',', skiprows = 1)
+raw_dataset = pd.read_csv("beshtau_weather.csv", names = column_names, na_values='?', sep =',', skiprows = 1)
 ds = raw_dataset.copy()
 ds = ds.drop('ur/h', 1)
 ds = ds.dropna()
@@ -159,7 +159,7 @@ def savitzky_golay(y, window_size, order, deriv=0, rate=1):
     return np.convolve(m[::-1], y, mode = 'valid')
 #Make predictions for 2020
 p_column_names = ['time', 'temp', 'pressure0', 'dp', 'airhumidity', 'winddir', 'windspd10', 'weathercnd', 'Td', 'mm precip12']
-ds_pred = pd.read_csv("D:\\Users\\User\\Desktop\\radon stuff\\beshtau2020w.csv", names = p_column_names, na_values='?', sep =',', skiprows = 1)
+ds_pred = pd.read_csv("beshtau2020w.csv", names = p_column_names, na_values='?', sep =',', skiprows = 1)
 timestamps = ds_pred.pop('time')
 ds_pred = pd.get_dummies(ds_pred, columns = catcols, dummy_na=False)
 hs_pred = list(ds_pred.columns)
